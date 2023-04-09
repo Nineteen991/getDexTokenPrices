@@ -1,0 +1,6 @@
+@mixin fade-in($name, $duration, $method, $time)
+  animation: $name $duration $method $time
+
+@mixin keyframes($name)
+  @keyframes #{$name}
+    @content
