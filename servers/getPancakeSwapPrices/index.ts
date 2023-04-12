@@ -1,75 +1,34 @@
-import { ethers } from 'ethers'
+import express, { Request, Response } from 'express'
+import bodyParser from 'body-parser'
+import cors from 'cors'
 
-import { 
-  erc20ABI, 
-  // factoryABI,
-  routerABI,
-  // pairABI
-} from './utils/abiList'
+import pancakeRouter from './routers/pancakeRouter'
 
-import { 
-  // addressFactory,
-  addresses,
-  addressRouter,
-  addressFrom,
-  addressTo
-} from './utils/addressList'
+const app = express()
 
-const provider: ethers.providers.JsonRpcProvider = new ethers.providers.JsonRpcProvider(
-  "https://bsc-dataseed.binance.org"
-)
+// Middleware
+app.use(cors())
+app.use(express.json())
+app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }))
 
-// Connect to Router
-const contractRouter: ethers.Contract = new ethers.Contract(
-  addressRouter,
-  routerABI,
-  provider
-)
+// Routes
+app.get('/', (req: Request, res: Response) => {
+  res.send("Let's get some prices!")
+})
 
-const getPrices = async (
-    amountInHuman: string, 
-    fromToken: string, 
-    toToken: string
-  ) => {
-  const contractToken: ethers.Contract = new ethers.Contract(
-    fromToken, 
-    erc20ABI, 
-    provider
-  )
+app.use('/api/v1/pancakeswap', pancakeRouter)
 
-  const decimals: number = await contractToken.decimals()
+const PORT = 5000
 
-  // Convert the amount to blockchain readable amount
-  const amountIn: string = ethers.utils.parseUnits(
-    amountInHuman, 
-    decimals
-  ).toString()
-
-  const amountsOut: number[] = await contractRouter.getAmountsOut(
-    amountIn, [
-    fromToken,
-    toToken
-  ])
-
-  const contractToken2: ethers.Contract = new ethers.Contract(
-    toToken, 
-    erc20ABI, 
-    provider
-  )
-  const decimals2: number = await contractToken2.decimals()
-
-  // Convert the amount out (BUSD) - human readable
-  const amountOutHuman: string = ethers.utils.formatUnits(
-    amountsOut[1].toString(),
-    decimals2
-  )
-
-  console.log(amountOutHuman)
+const start = async () => {
+  try {
+    app.listen(PORT, () => {
+      console.log(`Server started on port: ${ PORT }`)
+    })
+  }
+  catch (error) {
+    console.log(`You broke the server: ${ error }`)
+  }
 }
 
-const amountInHuman: string = '1'
-const fromToken: string = ''
-const toToken: string = ``
-
-getPrices(amountInHuman, addresses.WBNB, addresses.USDT)
-getPrices(amountInHuman, addresses.ETH, addresses.USDT)
+start()
