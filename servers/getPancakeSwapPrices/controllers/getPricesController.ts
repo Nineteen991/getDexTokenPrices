@@ -1,10 +1,14 @@
+import { Request, Response } from 'express'
 import { ethers } from 'ethers'
 
-import { erc20ABI } from './abiList'
-import { addresses } from './addressList'
-import { provider, pancakeswapRouter } from './pancakeswapRouter'
+import { erc20ABI } from '../utils/abiList'
+import { addresses } from '../utils/addressList'
+import { provider, pancakeswapRouter } from '../utils/pancakeswapRouter'
+import { GetPrices } from '../interfaces/getPrices.interface'
 
-const getPrices = async (fromToken: string) => {
+const getPricesController = async (req: Request, res: Response) => {
+  const { fromToken } = req.body as GetPrices
+
   try {
     const contractToken: ethers.Contract = new ethers.Contract(
       fromToken, 
@@ -39,11 +43,11 @@ const getPrices = async (fromToken: string) => {
       decimals2
     )
   
-    return `${ amountOutHuman }`
+    res.status(200).json({ Amount: amountOutHuman })
   }
   catch (error) {
-    console.error("Didn't get da prices: ", error)
+    res.status(400).send(error)
   }
 }
 
-export default getPrices
+export default getPricesController
