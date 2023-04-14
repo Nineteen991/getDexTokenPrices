@@ -42,8 +42,8 @@ const getPricesController = async (req: Request, res: Response) => {
       amountsOut[1].toString(),
       decimals2
     )
-  
-    res.status(200).json({ Amount: amountOutHuman })
+
+    res.status(200).send(amountOutHuman)
   }
   catch (error) {
     res.status(400).send(error)

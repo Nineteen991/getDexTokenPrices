@@ -42,7 +42,7 @@ const getSinglePriceController = async (req: Request, res: Response) => {
       decimals2
     )
   
-    res.status(200).json({ Amount: amountOutHuman })
+    res.status(200).send({ amount: amountOutHuman })
   }
   catch (error) {
     res.status(400).send({ error })
