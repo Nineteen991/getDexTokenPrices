@@ -1,21 +1,19 @@
 import { useState, useEffect } from 'react'
 
 import fetchPrices from './utils/fetchPrices'
-import { BSCaddr, addr } from './utils/addresses'
+import { BSCaddr } from './utils/addresses'
 import { Tokens } from './utils/interfaces'
+import BtcbPrices from './components/btcbPrices'
+import EthPrices from './components/ethPrices'
+import WbnbPrices from './components/wbnbPrices'
+import CakePrices from './components/cakePrices'
 import './App.sass'
 
 export default function App() {
-  const [btcbPrice, setBtcbPrice] = useState<string>('')
-  const [ethPrice, setEthPrice] = useState<string>('')
-  const [wbnbPrice, setWbnbPrice] = useState<string>('')
-  const [cakePrice, setCakePrice] = useState<string>('')
-  const [newToken, setNewToken] = useState<{}[]>([])
-
-  const [tokens, setTokens] = useState<Tokens>({
+  const [inputToken, setInputToken] = useState<Tokens>({
     amount: '',
     fromToken: '',
-    toToken: ''
+    toToken: '',
   })
   const [returnedToken, setReturnedToken] = useState<Tokens>({
     amount: '',
@@ -28,7 +26,7 @@ export default function App() {
     const target = e.target as HTMLInputElement
 
     const { name, value } = target
-    setTokens(prev => (
+    setInputToken(prev => (
       {
         ...prev,
         [name]: value
@@ -37,30 +35,23 @@ export default function App() {
 
     const key = Object.keys(BSCaddr)[Object.values(BSCaddr).indexOf(value)]
     setReturnedToken(prev => (
-      {
-        ...prev,
-        [name]: key
-      }
+      name === 'amount'
+        ? {
+            ...prev,
+            amount: ''
+          }
+        : {
+            ...prev,
+            [name]: key
+          }
     ))
   }
-
+console.log(returnedToken)
   const handleSubmit = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault()
-    console.log('clicked')
-    
+
+    fetchPrices('1', BSCaddr.BTCB, setReturnedToken, BSCaddr.WBNB, signal)
   }
-
-  useEffect(() => {
-    const controller = new AbortController()
-    const signal = controller.signal 
-
-    fetchPrices(BSCaddr.BTCB, setBtcbPrice, signal)
-    fetchPrices(BSCaddr.ETH, setEthPrice, signal)
-    fetchPrices(BSCaddr.WBNB, setWbnbPrice, signal)
-    fetchPrices(BSCaddr.CAKE, setCakePrice, signal)
-
-    return () => controller.abort()
-  }, [])
 
   return (
     <div className='container'>
@@ -74,7 +65,7 @@ export default function App() {
               name='amount'
               className='input-amount'
               placeholder='Amount'
-              value={ tokens.amount }
+              value={ inputToken.amount }
               onChange={ handleChange }
               required
             />
@@ -86,10 +77,12 @@ export default function App() {
             >
               <option value=''></option>
               <option value={ BSCaddr.BTCB } id='BTCB'>BTCB</option>
+              <option value={ BSCaddr.ETH }>ETH</option>
               <option value={ BSCaddr.WBNB }>WBNB</option>
               <option value={ BSCaddr.CAKE }>CAKE</option>
-              <option value={ BSCaddr.ETH }>ETH</option>
+              <option value={ BSCaddr.BUSD }>BUSD</option>
               <option value={ BSCaddr.USDT }>USDT</option>
+              <option value={ BSCaddr.USDC }>USDC</option>
             </select>
             <select
               name='toToken'
@@ -98,11 +91,13 @@ export default function App() {
               required
             >
               <option value=''></option>
-              <option value={ BSCaddr.USDT }>USDT</option>
-              <option value={ BSCaddr.BTCB }>BTCB</option>
               <option value={ BSCaddr.WBNB }>WBNB</option>
-              <option value={ BSCaddr.CAKE }>CAKE</option>
+              <option value={ BSCaddr.BUSD }>BUSD</option>
+              <option value={ BSCaddr.USDT }>USDT</option>
+              <option value={ BSCaddr.USDC }>USDC</option>
+              <option value={ BSCaddr.BTCB }>BTCB</option>
               <option value={ BSCaddr.ETH }>ETH</option>
+              <option value={ BSCaddr.CAKE }>CAKE</option>
             </select>
             <button 
               type='submit'
@@ -113,55 +108,10 @@ export default function App() {
           </form>
         </div>
 
-        <div className='returned-prices'>
-          {
-            btcbPrice 
-              ? (<h3 className='returned-price'>
-                  { btcbPrice }
-                  <span className='price-span'>BTCB / USDT</span>
-                </h3>)
-              : 'Fetching BTCB price...'
-          }
-        </div>
-
-        <div className='returned-prices'>
-          {
-            ethPrice 
-              ? (<h3 className='returned-price'>
-                  { ethPrice }
-                  <span className='price-span'>ETH / USDT</span>
-                </h3>)
-              : 'Fetching ETH price...'
-          }
-        </div>
-
-        <div className='returned-prices'>
-          {
-            wbnbPrice 
-              ? (<h3 className='returned-price'>
-                  { wbnbPrice }
-                  <span className='price-span'>WBNB / USDT</span>
-                </h3>)
-              : 'Fetching WBNB price...'
-          }
-        </div>
-
-        <div className='returned-prices'>
-          {
-            cakePrice 
-              ? (<h3 className='returned-price'>
-                  { cakePrice }
-                  <span className='price-span'>CAKE / USDT</span>
-                </h3>)
-              : 'Fetching CAKE price...'
-          }
-        </div>
-
-        {
-          newToken
-            ? <h2>{`${newToken}`}</h2>
-            : null
-        }
+        <BtcbPrices />
+        <EthPrices />
+        <WbnbPrices />
+        <CakePrices />
 
       </div>
     </div>
