@@ -27,11 +27,11 @@ const getPricesController = async (req: Request, res: Response) => {
     const amountsOut: number[] = await pancakeswapRouter.getAmountsOut(
       amountIn, [
       fromToken,
-      addresses.USDT
+      addresses.BUSD
     ])
   
     const contractToken2: ethers.Contract = new ethers.Contract(
-      addresses.USDT, 
+      addresses.BUSD, 
       erc20ABI, 
       provider
     )

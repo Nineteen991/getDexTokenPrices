@@ -1,4 +1,4 @@
-export default function fetchPrices(
+export default function fetchCustomPrices(
   amountInHuman: string,
   fromToken: string, 
   setToken: React.Dispatch<React.SetStateAction<string>>,
@@ -16,7 +16,12 @@ export default function fetchPrices(
         .then(res => res.json())
         .then(data => {
           console.log(data)
-          setToken(data)
+          // setToken(prev => (
+          //   {
+          //     ...prev,
+
+          //   }
+          // ))
           console.log('got it')
         })
         .catch(error => {

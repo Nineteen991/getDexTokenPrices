@@ -50,7 +50,6 @@ console.log(returnedToken)
   const handleSubmit = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault()
 
-    fetchPrices('1', BSCaddr.BTCB, setReturnedToken, BSCaddr.WBNB, signal)
   }
 
   return (

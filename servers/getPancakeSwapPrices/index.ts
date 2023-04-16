@@ -18,7 +18,7 @@ app.get('/', (req: Request, res: Response) => {
 })
 
 app.use('/api/v1/prices', pricesRouter)
-app.use('/api/v1/pancakeswap', pancakeRouter)
+app.use('/api/v1/pancakeswapV2', pancakeRouter)
 
 const PORT = 5000
 
