@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 import fetchPrices from '../utils/fetchPrices'
 import { BSCaddr } from '../utils/addresses'
+import TokenPrice from './tokenPrice'
 
 export default function WbnbPrices() {
   const [wbnbToBusdPrices, setWbnbToBusdPrice] = useState<string>('')
@@ -25,34 +26,42 @@ export default function WbnbPrices() {
     <div className='returned-prices'>
       {
         wbnbToBusdPrices
-          ? (<h3 className='returned-price'>
-              { wbnbToBusdPrices }
-              <span className='price-span'>WBNB / BUSD</span>
-            </h3>)
+          ? <TokenPrice 
+              price={ wbnbToBusdPrices } 
+              fromToken={ BSCaddr.WBNB } 
+              toToken={ BSCaddr.BUSD }
+              reset={ setWbnbToBusdPrice }
+            />
           : <h3 className='returned-price'>'Fetching WBNB / BUSD price...'</h3>
       }
       {
         wbnbToUsdtPrices
-          ? (<h3 className='returned-price'>
-              { wbnbToUsdtPrices }
-              <span className='price-span'>WBNB / USDT</span>
-            </h3>)
+          ? <TokenPrice 
+              price={ wbnbToUsdtPrices } 
+              fromToken={ BSCaddr.WBNB } 
+              toToken={ BSCaddr.USDT }
+              reset={ setWbnbToUsdtPrice }
+            />
           : <h3 className='returned-price'>'Fetching WBNB / USDT price...'</h3>
       }
       {
         wbnbToUsdcPrices
-          ? (<h3 className='returned-price'>
-              { wbnbToUsdcPrices }
-              <span className='price-span'>WBNB / USDC</span>
-            </h3>)
+          ? <TokenPrice 
+              price={ wbnbToUsdcPrices } 
+              fromToken={ BSCaddr.WBNB } 
+              toToken={ BSCaddr.USDC }
+              reset={ setWbnbToUsdcPrice }
+            />
           : <h3 className='returned-price'>'Fetching WBNB / USDC price...'</h3>
       }
       {
         wbnbToCakePrices
-          ? (<h3 className='returned-price'>
-              { wbnbToCakePrices }
-              <span className='price-span'>WBNB / CAKE</span>
-            </h3>)
+          ? <TokenPrice 
+              price={ wbnbToCakePrices } 
+              fromToken={ BSCaddr.WBNB } 
+              toToken={ BSCaddr.CAKE }
+              reset={ setWbnbToCakePrice }
+            />
           : <h3 className='returned-price'>'Fetching WBNB / CAKE price...'</h3>
       }
     </div>

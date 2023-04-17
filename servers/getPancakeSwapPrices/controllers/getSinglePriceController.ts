@@ -6,7 +6,7 @@ import { GetPrices } from '../interfaces/getPrices.interface'
 import { provider, pancakeswapRouter } from '../utils/pancakeswapRouter'
 
 const getSinglePriceController = async (req: Request, res: Response) => {
-  const { amountInHuman, fromToken, toToken } = req.body as GetPrices
+  const { amount, fromToken, toToken } = req.body as GetPrices
 
   try {
     const contractToken: ethers.Contract = new ethers.Contract(
@@ -19,7 +19,7 @@ const getSinglePriceController = async (req: Request, res: Response) => {
   
     // Convert the amount to blockchain readable amount
     const amountIn: string = ethers.utils.parseUnits(
-      amountInHuman, 
+      amount, 
       decimals
     ).toString()
   

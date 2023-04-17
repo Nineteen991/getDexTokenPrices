@@ -1,5 +1,5 @@
 export default function fetchPrices(
-  amountInHuman: string,
+  amount: string,
   fromToken: string, 
   setToken: React.Dispatch<React.SetStateAction<string>>,
   toToken: string,
@@ -9,15 +9,13 @@ export default function fetchPrices(
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(
-          { amountInHuman, fromToken, toToken }
+          { amount, fromToken, toToken }
         ),
         signal
       })
         .then(res => res.json())
         .then(data => {
-          console.log(data)
           setToken(data)
-          console.log('got it')
         })
         .catch(error => {
           if (error.name === "AbortError") {

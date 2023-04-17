@@ -1,28 +1,39 @@
+import { Tokens } from '../utils/interfaces'
+
 export default function fetchCustomPrices(
-  amountInHuman: string,
+  amount: string,
   fromToken: string, 
-  setToken: React.Dispatch<React.SetStateAction<string>>,
+  setReturnedToken: React.Dispatch<React.SetStateAction<Tokens>>,
   toToken: string,
-  signal: AbortSignal
+  signal: AbortSignal,
+  setCustomPairs: React.Dispatch<React.SetStateAction<Tokens[]>>
 ) {
   fetch('http://localhost:5000/api/v1/pancakeswapV2', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(
-          { amountInHuman, fromToken, toToken }
+          { amount, fromToken, toToken }
         ),
         signal
       })
         .then(res => res.json())
         .then(data => {
-          console.log(data)
-          // setToken(prev => (
-          //   {
-          //     ...prev,
-
-          //   }
-          // ))
-          console.log('got it')
+          setReturnedToken(prev => (
+            {
+              ...prev,
+              amount: data
+            }
+          ))
+          setCustomPairs(prev => (
+            [
+              ...prev,
+              {
+                amount: data,
+                'fromToken': fromToken,
+                'toToken': toToken
+              }
+            ]
+          ))
         })
         .catch(error => {
           if (error.name === "AbortError") {

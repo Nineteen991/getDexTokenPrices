@@ -1,5 +1,5 @@
 export interface GetPrices {
-  amountInHuman: string,
+  amount: string,
   fromToken: string, 
   toToken: string
 }
