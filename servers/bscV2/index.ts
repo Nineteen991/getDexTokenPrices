@@ -16,7 +16,7 @@ app.get('/', (req: Request, res: Response) => {
   res.send("Let's get some prices!")
 })
 
-app.use('/api/v1/pancakeswapV2', pancakeRouter)
+app.use('/api/v1/bsc', pancakeRouter)
 
 const PORT = 5000
 

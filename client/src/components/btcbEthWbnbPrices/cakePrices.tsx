@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 
-import fetchPrices from '../utils/fetchPrices'
-import { BSCaddr } from '../utils/addresses'
-import TokenPrice from './renderTokenPrice'
+import fetchPrices from '../../utils/fetchPrices'
+import { BSCaddr } from '../../utils/addresses'
+import { DexProps } from '../../utils/types'
+import RenderTokenPrice from '../renderTokenPrice'
 
-export default function CakePrices() {
+export default function CakePrices({ dex, chain }: DexProps) {
   const [cakeToWbnbPrices, setCakeToWbnbPrice] = useState<string>('')
   const [cakeToBusdPrices, setCakeToBusdPrice] = useState<string>('')
   const [cakeToUsdtPrices, setCakeToUsdtPrice] = useState<string>('')
@@ -12,54 +13,70 @@ export default function CakePrices() {
 
   useEffect(() => {
     const controller = new AbortController()
-    const signal = controller.signal 
+    const signal = controller.signal
 
-    fetchPrices('1', BSCaddr.CAKE, setCakeToWbnbPrice, BSCaddr.WBNB, signal)
-    fetchPrices('1', BSCaddr.CAKE, setCakeToBusdPrice, BSCaddr.BUSD, signal)
-    fetchPrices('1', BSCaddr.CAKE, setCakeToUsdtPrice, BSCaddr.USDT, signal)
-    fetchPrices('1', BSCaddr.CAKE, setCakeToUsdcPrice, BSCaddr.USDC, signal)
+    fetchPrices(
+      '1', BSCaddr.CAKE, setCakeToWbnbPrice, BSCaddr.WBNB, dex, chain, signal
+    )
+    fetchPrices(
+      '1', BSCaddr.CAKE, setCakeToBusdPrice, BSCaddr.BUSD, dex, chain, signal
+    )
+    fetchPrices(
+      '1', BSCaddr.CAKE, setCakeToUsdtPrice, BSCaddr.USDT, dex, chain, signal
+    )
+    fetchPrices(
+      '1', BSCaddr.CAKE, setCakeToUsdcPrice, BSCaddr.USDC, dex, chain, signal
+    )
 
     return () => controller.abort()
-  }, [])
+  }, [dex, chain])
 
   return (
     <div className='returned-prices'>
       {
         cakeToWbnbPrices
-          ? <TokenPrice 
+          ? <RenderTokenPrice 
               price={ cakeToWbnbPrices } 
               fromToken={ BSCaddr.CAKE } 
               toToken={ BSCaddr.WBNB }
+              dex={ dex }
+              chain={ chain }
               reset={ setCakeToWbnbPrice }
             />
           : <h3 className='returned-price'>'Fetching CAKE / WBNB price...'</h3>
       }
       {
         cakeToBusdPrices
-          ? <TokenPrice 
+          ? <RenderTokenPrice 
               price={ cakeToBusdPrices } 
               fromToken={ BSCaddr.CAKE } 
               toToken={ BSCaddr.BUSD }
+              dex={ dex }
+              chain={ chain }
               reset={ setCakeToBusdPrice }
             />
           : <h3 className='returned-price'>'Fetching CAKE / BUSD price...'</h3>
       }
       {
         cakeToUsdtPrices
-          ? <TokenPrice 
+          ? <RenderTokenPrice 
               price={ cakeToUsdtPrices } 
               fromToken={ BSCaddr.CAKE } 
               toToken={ BSCaddr.USDT }
+              dex={ dex }
+              chain={ chain }
               reset={ setCakeToUsdtPrice }
             />
           : <h3 className='returned-price'>'Fetching CAKE / USDT price...'</h3>
       }
       {
         cakeToUsdcPrices
-          ? <TokenPrice 
+          ? <RenderTokenPrice 
               price={ cakeToUsdcPrices } 
               fromToken={ BSCaddr.CAKE } 
               toToken={ BSCaddr.USDC }
+              dex={ dex }
+              chain={ chain }
               reset={ setCakeToUsdcPrice }
             />
           : <h3 className='returned-price'>'Fetching CAKE / USDC price...'</h3>

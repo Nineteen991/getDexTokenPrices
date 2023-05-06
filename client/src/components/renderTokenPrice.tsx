@@ -3,8 +3,15 @@ import { BSCaddr } from "../utils/addresses"
 import fetchPrices from '../utils/fetchPrices'
 import { Token } from '../utils/types'
 
-
-export default function TokenPrice({price, fromToken, toToken, reset}: Token) {
+export default function RenderTokenPrice(
+  {
+    price, 
+    fromToken, 
+    toToken, 
+    dex,
+    chain,
+    reset
+  }: Token ) {
   const { nixTradingPair, setNixTradingPair } = useNixTradingPair()
 
   // I want the object keys for each pair name
@@ -19,7 +26,7 @@ export default function TokenPrice({price, fromToken, toToken, reset}: Token) {
   const signal = controller.signal
 
   const refreshPrice = () => {
-    fetchPrices('1', fromToken, reset, toToken, signal)
+    fetchPrices('1', fromToken, reset, toToken, dex, chain, signal)
 
     return () => controller.abort()
   }

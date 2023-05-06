@@ -3,11 +3,11 @@ import { useContext, useReducer } from 'react'
 import { BSCaddr } from '../utils/addresses'
 import fetchCustomPairPrices from '../utils/fetchCustomPairPrices'
 import { Context } from '../tokenContext'
-import { ContextTokens } from '../utils/types'
+import { ContextTokens, DexProps } from '../utils/types'
 import { initialState, reducer } from '../utils/tokenPairReducer'
 import RenderCustomTokenPairs from './renderCustomTokenPairs'
 
-export default function CustomTokenPrice() {
+export default function CustomTokenPrice({ dex, chain }: DexProps) {
   const { customPairs, setCustomPairs } = useContext(Context) as ContextTokens
   const [tokenPair, dispatch] = useReducer(reducer, initialState)
 
@@ -41,13 +41,15 @@ export default function CustomTokenPrice() {
     fetchCustomPairPrices(
       tokenPair,
       signal,
+      dex,
+      chain,
       setCustomPairs
     )
     return () => controller.abort()
   }
 
   return (
-    <>
+    <div className='custom-token-price'>
       <div className='input-fields'>
         <form className='input-form' onSubmit={ handleSubmit }>
           <input
@@ -100,10 +102,13 @@ export default function CustomTokenPrice() {
       {
         customPairs
           ? customPairs.map(pair => (
-              <RenderCustomTokenPairs tokenPair={ pair } key={ pair.id } />
+              <RenderCustomTokenPairs 
+                tokenPair={ pair }
+                key={ pair.id }
+              />
             ))
           : null
       }
-    </>
+    </div>
   )
 }

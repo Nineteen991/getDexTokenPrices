@@ -3,10 +3,13 @@ import { ethers } from 'ethers'
 
 import { erc20ABI } from '../utils/abiList'
 import { GetPrices } from '../interfaces/getPrices.interface'
-import { provider, pancakeswapRouter } from '../utils/pancakeswapRouter'
+import { provider } from '../utils/pancakeswapRouter'
+import getDexRouter from '../utils/getDexRouter'
 
 const getSinglePriceController = async (req: Request, res: Response) => {
-  const { amount, fromToken, toToken } = req.body as GetPrices
+  const { amount, fromToken, toToken, dex } = req.body as GetPrices
+
+  const router = getDexRouter(dex)
 
   try {
     const contractToken: ethers.Contract = new ethers.Contract(
@@ -23,7 +26,7 @@ const getSinglePriceController = async (req: Request, res: Response) => {
       decimals
     ).toString()
   
-    const amountsOut: number[] = await pancakeswapRouter.getAmountsOut(
+    const amountsOut: number[] = await router.getAmountsOut(
       amountIn, [
       fromToken,
       toToken

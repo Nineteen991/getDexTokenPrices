@@ -32,5 +32,12 @@ export type Token = {
   price: string
   fromToken: string
   toToken: string
+  dex: string
+  chain: string
   reset: React.Dispatch<React.SetStateAction<string>>
+}
+
+export type DexProps = {
+  dex: string
+  chain: string
 }
