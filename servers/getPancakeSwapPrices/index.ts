@@ -2,7 +2,6 @@ import express, { Request, Response } from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 
-import pricesRouter from './routers/pricesRouter'
 import pancakeRouter from './routers/pancakeRouter'
 
 const app = express()
@@ -17,7 +16,6 @@ app.get('/', (req: Request, res: Response) => {
   res.send("Let's get some prices!")
 })
 
-app.use('/api/v1/prices', pricesRouter)
 app.use('/api/v1/pancakeswapV2', pancakeRouter)
 
 const PORT = 5000

@@ -1,17 +1,13 @@
 import { useNixTradingPair } from "../hooks/useNixTradingPair"
 import { BSCaddr } from "../utils/addresses"
 import fetchPrices from '../utils/fetchPrices'
+import { Token } from '../utils/types'
 
-type token = { 
-  price: string
-  fromToken: string
-  toToken: string
-  reset: React.Dispatch<React.SetStateAction<string>>
-}
 
-export default function TokenPrice({price, fromToken, toToken, reset}: token) {
+export default function TokenPrice({price, fromToken, toToken, reset}: Token) {
   const { nixTradingPair, setNixTradingPair } = useNixTradingPair()
 
+  // I want the object keys for each pair name
   const fromName = Object.keys(BSCaddr)[
     Object.values(BSCaddr).indexOf(fromToken)
   ]

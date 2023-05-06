@@ -1,13 +1,11 @@
-import { Tokens } from '../utils/interfaces'
+import { TokenPairInfo } from './types'
 
-export default function fetchCustomPrices(
-  amount: string,
-  fromToken: string, 
-  setReturnedToken: React.Dispatch<React.SetStateAction<Tokens>>,
-  toToken: string,
+export default function fetchCustomPairPrices(
+  tokenPair: TokenPairInfo,
   signal: AbortSignal,
-  setCustomPairs: React.Dispatch<React.SetStateAction<Tokens[]>>
+  setCustomPairs: React.Dispatch<React.SetStateAction<TokenPairInfo[]>>
 ) {
+  const { amount, fromToken, toToken } = tokenPair
   fetch('http://localhost:5000/api/v1/pancakeswapV2', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -18,19 +16,12 @@ export default function fetchCustomPrices(
       })
         .then(res => res.json())
         .then(data => {
-          setReturnedToken(prev => (
-            {
-              ...prev,
-              amount: data
-            }
-          ))
           setCustomPairs(prev => (
             [
               ...prev,
               {
-                amount: data,
-                'fromToken': fromToken,
-                'toToken': toToken
+                ...tokenPair,
+                amount: String(data),
               }
             ]
           ))

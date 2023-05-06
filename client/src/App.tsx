@@ -1,16 +1,16 @@
 import { useContext } from 'react'
 
-import { ContextTokens } from './utils/interfaces'
+import { ContextTokens } from './utils/types'
 import BtcbPrices from './components/btcbPrices'
 import EthPrices from './components/ethPrices'
 import WbnbPrices from './components/wbnbPrices'
-import CakePrices from './components/cakePrices'
+// import CakePrices from './components/cakePrices'
 import CustomTokenPrice from './components/customTokenPrice'
 import { Context } from './tokenContext'
 import './App.sass'
 
 export default function App() {
-  const { returnedToken, customPairs } = useContext(Context) as ContextTokens
+  const {  customPairs } = useContext(Context) as ContextTokens
 
 console.log(customPairs)
   return (
@@ -23,22 +23,7 @@ console.log(customPairs)
         <BtcbPrices />
         <EthPrices />
         <WbnbPrices />
-        <CakePrices />
-
-        {
-          returnedToken.amount
-            ? (
-                <div className='returned-prices'>
-                  <h3 className='returned-price'>
-                    { returnedToken.amount }
-                    <span className='price-span'>
-                      { returnedToken.fromToken } / { returnedToken.toToken }
-                    </span>
-                  </h3>
-                </div>
-              )
-            : null
-        }
+        {/* <CakePrices /> */}
 
       </div>
     </div>

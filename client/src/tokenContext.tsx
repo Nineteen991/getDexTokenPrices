@@ -1,21 +1,14 @@
 import { createContext, useState, ReactNode } from 'react'
 
-import { Tokens, ContextTokens } from "./utils/interfaces"
+import { ContextTokens, TokenPairInfo } from "./utils/types"
 
 let Context = createContext<ContextTokens | undefined>(undefined)
 
 function ContextProvider ({ children }: { children: ReactNode }) {
-  const [returnedToken, setReturnedToken] = useState<Tokens>({
-    amount: '',
-    fromToken: '',
-    toToken: ''
-  })
-  const [customPairs, setCustomPairs] = useState<Tokens[]>([])
+  const [customPairs, setCustomPairs] = useState<TokenPairInfo[]>([])
 
   return (
     <Context.Provider value={{
-      returnedToken,
-      setReturnedToken,
       customPairs,
       setCustomPairs
     }}>

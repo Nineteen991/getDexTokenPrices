@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 import fetchPrices from '../utils/fetchPrices'
 import { BSCaddr } from '../utils/addresses'
-import TokenPrice from './tokenPrice'
+import TokenPrice from './renderTokenPrice'
 
 export default function CakePrices() {
   const [cakeToWbnbPrices, setCakeToWbnbPrice] = useState<string>('')
