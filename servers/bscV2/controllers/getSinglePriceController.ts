@@ -25,13 +25,13 @@ const getSinglePriceController = async (req: Request, res: Response) => {
       amount, 
       decimals
     ).toString()
-  
+
     const amountsOut: number[] = await router.getAmountsOut(
       amountIn, [
       fromToken,
       toToken
     ])
-  
+
     const contractToken2: ethers.Contract = new ethers.Contract(
       toToken, 
       erc20ABI, 
@@ -44,11 +44,11 @@ const getSinglePriceController = async (req: Request, res: Response) => {
       amountsOut[1].toString(),
       decimals2
     )
-  
+console.log(amountOutHuman)
     res.status(200).send(amountOutHuman)
   }
   catch (error) {
-    res.status(400).send({ error })
+    res.status(400).send({ 'controller error: ': error })
   }
 }
 

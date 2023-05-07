@@ -12,8 +12,8 @@ export default function PancakeSwapV2() {
       <h2 className='dex-prices'>PancakeSwap v2 Prices</h2>
 
       <CustomTokenPrice dex={ dex } chain={ chain } />
-      <BtcbPrices dex={ dex } chain={ chain } />
-      <EthPrices dex={ dex } chain={ chain } />
+      {/* <BtcbPrices dex={ dex } chain={ chain } />
+      <EthPrices dex={ dex } chain={ chain } /> */}
       <WbnbPrices dex={ dex } chain={ chain } />
 
     </div>

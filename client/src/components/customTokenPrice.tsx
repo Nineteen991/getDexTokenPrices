@@ -29,7 +29,7 @@ export default function CustomTokenPrice({ dex, chain }: DexProps) {
       dispatch({ type: 'TO', payload: value, key })
     }
     else {
-      throw Error('The name is broken :(')
+      throw Error('The reducer name is broken :(')
     }
   }
 

@@ -15,7 +15,10 @@ export default function fetchPrices(
         ),
         signal
       })
-        .then(res => res.json())
+        .then(res => {
+          console.log(res)
+          return res.json()
+        })
         .then(data => {
           console.log(data)
           setToken(data)
@@ -24,7 +27,7 @@ export default function fetchPrices(
           if (error.name === "AbortError") {
             console.log("Successfully aborted")
           } else {
-            console.error("Didn't fetch token: ", error)
+            console.error(`Didn't fetch pair: ${fromToken}/${toToken}`, error)
           }
         })
 }

@@ -8,7 +8,7 @@ import RenderTokenPrice from '../renderTokenPrice'
 export default function WbnbPrices({ dex, chain }: DexProps) {
   const [wbnbToBusdPrices, setWbnbToBusdPrice] = useState<string>('')
   const [wbnbToUsdtPrices, setWbnbToUsdtPrice] = useState<string>('')
-  const [wbnbToUsdcPrices, setWbnbToUsdcPrice] = useState<string>('')
+  // const [wbnbToUsdcPrices, setWbnbToUsdcPrice] = useState<string>('')
 
   useEffect(() => {
     const controller = new AbortController()
@@ -20,9 +20,9 @@ export default function WbnbPrices({ dex, chain }: DexProps) {
     fetchPrices(
       '1', BSCaddr.WBNB, setWbnbToUsdtPrice, BSCaddr.USDT, dex, chain, signal
       )
-    fetchPrices(
-      '1', BSCaddr.WBNB, setWbnbToUsdcPrice, BSCaddr.USDC, dex, chain, signal
-      )
+    // fetchPrices(
+    //   '1', BSCaddr.WBNB, setWbnbToUsdcPrice, BSCaddr.USDC, dex, chain, signal
+    //   )
 
     return () => controller.abort()
   }, [dex, chain])
@@ -53,7 +53,7 @@ export default function WbnbPrices({ dex, chain }: DexProps) {
             />
           : <h3 className='returned-price'>'Fetching WBNB / USDT price...'</h3>
       }
-      {
+      {/* {
         wbnbToUsdcPrices
           ? <RenderTokenPrice 
               price={ wbnbToUsdcPrices } 
@@ -64,7 +64,7 @@ export default function WbnbPrices({ dex, chain }: DexProps) {
               reset={ setWbnbToUsdcPrice }
             />
           : <h3 className='returned-price'>'Fetching WBNB / USDC price...'</h3>
-      }
+      } */}
     </div>
   )
 }

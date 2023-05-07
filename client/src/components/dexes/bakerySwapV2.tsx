@@ -1,13 +1,13 @@
 import WbnbPrices from '../btcbEthWbnbPrices/wbnbPrices'
 import CustomTokenPrice from '../customTokenPrice'
 
-export default function ApeSwapV2() {
-  const dex = 'apeswapV2'
+export default function BakerySwapV2() {
+  const dex = 'bakeryswapV2'
   const chain = 'bsc'
 
   return (
-    <div className='apeswap dex'>
-      <h2 className='dex-prices'>ApeSwap v2 Prices</h2>
+    <div className='bakeryswap dex'>
+      <h2 className='dex-prices'>BakerySwap v2 Prices</h2>
 
       <CustomTokenPrice dex={ dex } chain={ chain } />
       <WbnbPrices dex={ dex } chain={ chain } />
