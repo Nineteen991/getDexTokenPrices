@@ -1,3 +1,4 @@
+import CustomTokenPrice from './components/customTokenPrice'
 import PancakeSwapV2 from './components/dexes/pancakeSwapV2'
 import ApeSwapV2 from './components/dexes/apeSwapV2'
 import BakerySwapV2 from './components/dexes/bakerySwapV2'
@@ -8,6 +9,7 @@ import './App.sass'
 export default function App() {
   return (
     <div className='container'>
+      <CustomTokenPrice />
       <PancakeSwapV2 />
       <ApeSwapV2 />
       <BakerySwapV2 />

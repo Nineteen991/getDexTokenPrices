@@ -5,7 +5,7 @@ export default function fetchCustomPairPrices(
   signal: AbortSignal,
   dex: string,
   chain: string,
-  setCustomPairs: React.Dispatch<React.SetStateAction<TokenPairInfo[]>>
+  setCustomDexPairs: React.Dispatch<React.SetStateAction<TokenPairInfo[]>>
 ) {
   const { amount, fromToken, toToken } = tokenPair
   fetch(`http://localhost:5000/api/v1/${ chain }`, {
@@ -18,7 +18,7 @@ export default function fetchCustomPairPrices(
       })
         .then(res => res.json())
         .then(data => {
-          setCustomPairs(prev => (
+          setCustomDexPairs(prev => (
             [
               ...prev,
               {

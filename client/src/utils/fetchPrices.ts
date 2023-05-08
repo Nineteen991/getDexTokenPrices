@@ -16,11 +16,9 @@ export default function fetchPrices(
         signal
       })
         .then(res => {
-          console.log(res)
           return res.json()
         })
         .then(data => {
-          console.log(data)
           setToken(data)
         })
         .catch(error => {

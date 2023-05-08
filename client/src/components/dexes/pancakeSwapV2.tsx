@@ -1,20 +1,50 @@
-import BtcbPrices from '../btcbEthWbnbPrices/btcbPrices'
-import EthPrices from '../btcbEthWbnbPrices/ethPrices'
+import { useContext, useEffect, useState } from 'react'
+
 import WbnbPrices from '../btcbEthWbnbPrices/wbnbPrices'
-import CustomTokenPrice from '../customTokenPrice'
+import fetchCustomPairPrices from '../../utils/fetchCustomPairPrices'
+import RenderCustomTokenPairs from '../renderCustomTokenPairs'
+import { Context } from '../../tokenContext'
+import { ContextTokens, TokenPairInfo } from '../../utils/types'
 
 export default function PancakeSwapV2() {
   const dex = 'pancakeswapV2'
   const chain = 'bsc'
+  const [customDexPairs, setCustomDexPairs] = useState<TokenPairInfo[]>([])
+  const { customPair } = useContext(Context) as ContextTokens
+
+  useEffect(() => {
+    const controller = new AbortController()
+    const signal = controller.signal 
+
+    if (customPair.id) {
+      fetchCustomPairPrices(
+        customPair,
+        signal,
+        dex,
+        chain,
+        setCustomDexPairs
+      )
+    }
+    
+    return () => controller.abort()
+  }, [customPair])
 
   return (
     <div className='pancakeswap dex'>
       <h2 className='dex-prices'>PancakeSwap v2 Prices</h2>
 
-      <CustomTokenPrice dex={ dex } chain={ chain } />
-      {/* <BtcbPrices dex={ dex } chain={ chain } />
-      <EthPrices dex={ dex } chain={ chain } /> */}
       <WbnbPrices dex={ dex } chain={ chain } />
+
+      {
+        customDexPairs
+          ? customDexPairs.map(pair => (
+              <RenderCustomTokenPairs 
+                tokenPair={ pair }
+                key={ pair.id }
+              />
+            ))
+          : null
+      }
 
     </div>
   )

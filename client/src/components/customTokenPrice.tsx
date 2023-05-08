@@ -1,14 +1,12 @@
 import { useContext, useReducer } from 'react'
 
 import { BSCaddr } from '../utils/addresses'
-import fetchCustomPairPrices from '../utils/fetchCustomPairPrices'
 import { Context } from '../tokenContext'
-import { ContextTokens, DexProps } from '../utils/types'
+import { ContextTokens } from '../utils/types'
 import { initialState, reducer } from '../utils/tokenPairReducer'
-import RenderCustomTokenPairs from './renderCustomTokenPairs'
 
-export default function CustomTokenPrice({ dex, chain }: DexProps) {
-  const { customPairs, setCustomPairs } = useContext(Context) as ContextTokens
+export default function CustomTokenPrice() {
+  const { setCustomPair } = useContext(Context) as ContextTokens
   const [tokenPair, dispatch] = useReducer(reducer, initialState)
 
   const handleChange = (e: React.FormEvent<EventTarget>) => {
@@ -35,17 +33,7 @@ export default function CustomTokenPrice({ dex, chain }: DexProps) {
 
   const handleSubmit = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault()
-    const controller = new AbortController()
-    const signal = controller.signal 
-
-    fetchCustomPairPrices(
-      tokenPair,
-      signal,
-      dex,
-      chain,
-      setCustomPairs
-    )
-    return () => controller.abort()
+    setCustomPair(tokenPair)
   }
 
   return (
@@ -99,16 +87,6 @@ export default function CustomTokenPrice({ dex, chain }: DexProps) {
         </form>
       </div>
     
-      {
-        customPairs
-          ? customPairs.map(pair => (
-              <RenderCustomTokenPairs 
-                tokenPair={ pair }
-                key={ pair.id }
-              />
-            ))
-          : null
-      }
     </div>
   )
 }

@@ -4,11 +4,6 @@ export type Tokens = {
   toToken: string
 }
 
-export type ContextTokens = {
-  customPairs: TokenPairInfo[]
-  setCustomPairs: React.Dispatch<React.SetStateAction<TokenPairInfo[]>>
-}
-
 export type ReducerActions = { 
   type: 'AMOUNT' | 'FROM' | 'TO'
   payload: string
@@ -26,6 +21,16 @@ export type TokenPairInfo = {
 
 export type TokenPairProp = {
   tokenPair: TokenPairInfo
+}
+
+export type ContextTokens = {
+  customPair: TokenPairInfo
+  setCustomPair: React.Dispatch<React.SetStateAction<TokenPairInfo>>
+}
+
+export type useContextTokens = {
+  useCustomDexPairs: TokenPairInfo[]
+  setUseCustomDexPairs: React.Dispatch<React.SetStateAction<TokenPairInfo[]>>
 }
 
 export type Token = { 
