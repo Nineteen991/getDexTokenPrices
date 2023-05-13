@@ -1,9 +1,8 @@
-import { TokenPairProp } from '../utils/types'
+import { RenderCustomTokenPairsProps } from '../utils/types'
 import { useNixTradingPair } from "../hooks/useNixTradingPair"
 
-export default function RenderCustomTokenPairs({ tokenPair }: TokenPairProp) {
+export default function RenderCustomTokenPairs({ tokenPair }: RenderCustomTokenPairsProps) {
   const { nixTradingPair, setNixTradingPair } = useNixTradingPair()
-  
   return (
     !nixTradingPair
       ? (

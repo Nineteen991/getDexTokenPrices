@@ -11,20 +11,12 @@ export default function EthPrices({ dex, chain }: DexProps) {
   const [ethToUsdcPrices, setEthToUsdcPrice] = useState<string>('')
 
   useEffect(() => {
-    const controller = new AbortController()
-    const signal = controller.signal 
-
     fetchPrices(
-      '1', BSCaddr.ETH, setEthToBusdPrice, BSCaddr.BUSD, dex, chain, signal
-    )
+      '1', BSCaddr.ETH, setEthToBusdPrice, BSCaddr.BUSD, dex, chain)
     fetchPrices(
-      '1', BSCaddr.ETH, setEthToUsdtPrice, BSCaddr.USDT, dex, chain, signal
-    )
+      '1', BSCaddr.ETH, setEthToUsdtPrice, BSCaddr.USDT, dex, chain)
     fetchPrices(
-      '1', BSCaddr.ETH, setEthToUsdcPrice, BSCaddr.USDC, dex, chain, signal
-    )
-
-    return () => controller.abort()
+      '1', BSCaddr.ETH, setEthToUsdcPrice, BSCaddr.USDC, dex, chain)
   }, [dex, chain])
 
   return (

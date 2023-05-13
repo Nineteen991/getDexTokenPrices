@@ -19,7 +19,7 @@ export type TokenPairInfo = {
   toTokenName: string
 }
 
-export type TokenPairProp = {
+export type RenderCustomTokenPairsProps = {
   tokenPair: TokenPairInfo
 }
 

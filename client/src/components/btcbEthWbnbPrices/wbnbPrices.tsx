@@ -10,17 +10,10 @@ export default function WbnbPrices({ dex, chain }: DexProps) {
   const [wbnbToUsdtPrices, setWbnbToUsdtPrice] = useState<string>('')
 
   useEffect(() => {
-    const controller = new AbortController()
-    const signal = controller.signal 
-
     fetchPrices(
-      '1', BSCaddr.WBNB, setWbnbToBusdPrice, BSCaddr.BUSD, dex, chain, signal
-    )
+      '1', BSCaddr.WBNB, setWbnbToBusdPrice, BSCaddr.BUSD, dex, chain)
     fetchPrices(
-      '1', BSCaddr.WBNB, setWbnbToUsdtPrice, BSCaddr.USDT, dex, chain, signal
-      )
-
-    return () => controller.abort()
+      '1', BSCaddr.WBNB, setWbnbToUsdtPrice, BSCaddr.USDT, dex, chain)
   }, [dex, chain])
 
   return (

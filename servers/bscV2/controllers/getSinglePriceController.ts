@@ -44,7 +44,7 @@ const getSinglePriceController = async (req: Request, res: Response) => {
       amountsOut[1].toString(),
       decimals2
     )
-console.log(amountOutHuman)
+
     res.status(200).send(amountOutHuman)
   }
   catch (error) {

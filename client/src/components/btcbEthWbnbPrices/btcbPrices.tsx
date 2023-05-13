@@ -11,20 +11,12 @@ export default function BtcbPrices({ dex, chain }: DexProps) {
   const [btcbToUsdcPrices, setBtcbToUsdcPrice] = useState<string>('')
 
   useEffect(() => {
-    const controller = new AbortController()
-    const signal = controller.signal
-
     fetchPrices(
-      '1', BSCaddr.BTCB, setBtcbToBusdPrice, BSCaddr.BUSD, dex, chain, signal
-    )
+      '1', BSCaddr.BTCB, setBtcbToBusdPrice, BSCaddr.BUSD, dex, chain)
     fetchPrices(
-      '1', BSCaddr.BTCB, setBtcbToUsdtPrice, BSCaddr.USDT, dex, chain, signal
-    )
+      '1', BSCaddr.BTCB, setBtcbToUsdtPrice, BSCaddr.USDT, dex, chain)
     fetchPrices(
-      '1', BSCaddr.BTCB, setBtcbToUsdcPrice, BSCaddr.USDC, dex, chain, signal
-    )
-
-    return () => controller.abort()
+      '1', BSCaddr.BTCB, setBtcbToUsdcPrice, BSCaddr.USDC, dex, chain)
   }, [dex, chain])
 
   return (

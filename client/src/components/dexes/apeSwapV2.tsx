@@ -13,20 +13,14 @@ export default function ApeSwapV2() {
   const { customPair } = useContext(Context) as ContextTokens
 
   useEffect(() => {
-    const controller = new AbortController()
-    const signal = controller.signal 
-
     if (customPair.id) {
       fetchCustomPairPrices(
         customPair,
-        signal,
         dex,
         chain,
         setCustomDexPairs
       )
     }
-    
-    return () => controller.abort()
   }, [customPair])
 
   return (
@@ -45,7 +39,6 @@ export default function ApeSwapV2() {
             ))
           : null
       }
-
     </div>
   )
 }

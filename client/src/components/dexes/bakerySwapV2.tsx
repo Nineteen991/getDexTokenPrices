@@ -13,20 +13,14 @@ export default function BakerySwapV2() {
   const { customPair } = useContext(Context) as ContextTokens
 
   useEffect(() => {
-    const controller = new AbortController()
-    const signal = controller.signal 
-
     if (customPair.id) {
       fetchCustomPairPrices(
         customPair,
-        signal,
         dex,
         chain,
         setCustomDexPairs
       )
     }
-    
-    return () => controller.abort()
   }, [customPair])
 
   return (

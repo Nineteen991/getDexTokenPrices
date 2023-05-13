@@ -22,13 +22,8 @@ export default function RenderTokenPrice(
     Object.values(BSCaddr).indexOf(toToken)
   ]
 
-  const controller = new AbortController()
-  const signal = controller.signal
-
   const refreshPrice = () => {
-    fetchPrices('1', fromToken, reset, toToken, dex, chain, signal)
-
-    return () => controller.abort()
+    fetchPrices('1', fromToken, reset, toToken, dex, chain)
   }
 
   return (  

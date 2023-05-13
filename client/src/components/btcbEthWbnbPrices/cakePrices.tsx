@@ -12,23 +12,14 @@ export default function CakePrices({ dex, chain }: DexProps) {
   const [cakeToUsdcPrices, setCakeToUsdcPrice] = useState<string>('')
 
   useEffect(() => {
-    const controller = new AbortController()
-    const signal = controller.signal
-
     fetchPrices(
-      '1', BSCaddr.CAKE, setCakeToWbnbPrice, BSCaddr.WBNB, dex, chain, signal
-    )
+      '1', BSCaddr.CAKE, setCakeToWbnbPrice, BSCaddr.WBNB, dex, chain)
     fetchPrices(
-      '1', BSCaddr.CAKE, setCakeToBusdPrice, BSCaddr.BUSD, dex, chain, signal
-    )
+      '1', BSCaddr.CAKE, setCakeToBusdPrice, BSCaddr.BUSD, dex, chain)
     fetchPrices(
-      '1', BSCaddr.CAKE, setCakeToUsdtPrice, BSCaddr.USDT, dex, chain, signal
-    )
+      '1', BSCaddr.CAKE, setCakeToUsdtPrice, BSCaddr.USDT, dex, chain)
     fetchPrices(
-      '1', BSCaddr.CAKE, setCakeToUsdcPrice, BSCaddr.USDC, dex, chain, signal
-    )
-
-    return () => controller.abort()
+      '1', BSCaddr.CAKE, setCakeToUsdcPrice, BSCaddr.USDC, dex, chain)
   }, [dex, chain])
 
   return (
