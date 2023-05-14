@@ -27,7 +27,7 @@ export default function CustomTokenPrice() {
       dispatch({ type: 'TO', payload: value, key })
     }
     else {
-      throw Error('The reducer name is broken :(')
+      throw Error('The reducer name is wrong :(')
     }
   }
 

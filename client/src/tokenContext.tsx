@@ -14,10 +14,14 @@ function ContextProvider ({ children }: { children: ReactNode }) {
     toTokenName: '',
   })
 
+  const [blockChain, setBlockChain] = useState('ETH')
+
   return (
     <Context.Provider value={{
       customPair,
-      setCustomPair
+      setCustomPair,
+      blockChain,
+      setBlockChain
     }}>
       { children }
     </Context.Provider>

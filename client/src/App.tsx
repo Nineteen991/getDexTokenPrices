@@ -1,20 +1,27 @@
+import { useContext, useState } from 'react'
+
+import { Context } from './tokenContext'
+import { ContextTokens } from './utils/types'
+import PickBlockChain from './components/pickBlockChain'
 import CustomTokenPrice from './components/customTokenPrice'
-import PancakeSwapV2 from './components/dexes/pancakeSwapV2'
-import ApeSwapV2 from './components/dexes/apeSwapV2'
-import BakerySwapV2 from './components/dexes/bakerySwapV2'
-import BabySwapV2 from './components/dexes/babySwapV2'
-import BiSwapV2 from './components/dexes/biSwapV2'
+import BSC from './components/blockchains/bsc'
+import ETH from './components/blockchains/eth'
+
 import './App.sass'
 
 export default function App() {
+  const { blockChain } = useContext(Context) as ContextTokens
+  
+
   return (
     <div className='container'>
+      <PickBlockChain />
       <CustomTokenPrice />
-      <PancakeSwapV2 />
-      <ApeSwapV2 />
-      <BakerySwapV2 />
-      <BabySwapV2 />
-      <BiSwapV2 />
+      {
+        blockChain === 'ETH'
+          ? <ETH />
+          : <BSC />
+      }
     </div>
   )
 }

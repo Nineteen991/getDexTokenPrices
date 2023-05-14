@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react'
 
-import WbnbPrices from '../btcbEthWbnbPrices/wbnbPrices'
-import fetchCustomPairPrices from '../../utils/fetchCustomPairPrices'
-import RenderCustomTokenPairs from '../renderCustomTokenPairs'
-import { Context } from '../../tokenContext'
-import { ContextTokens, TokenPairInfo } from '../../utils/types'
+import WbnbPrices from '../../btcbEthWbnbPrices/wbnbPrices'
+import fetchCustomPairPrices from '../../../utils/fetchCustomPairPrices'
+import RenderCustomTokenPairs from '../../renderCustomTokenPairs'
+import { Context } from '../../../tokenContext'
+import { ContextTokens, TokenPairInfo } from '../../../utils/types'
 
 export default function PancakeSwapV2() {
   const dex = 'pancakeswapV2'

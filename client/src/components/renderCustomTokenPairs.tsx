@@ -3,6 +3,7 @@ import { useNixTradingPair } from "../hooks/useNixTradingPair"
 
 export default function RenderCustomTokenPairs({ tokenPair }: RenderCustomTokenPairsProps) {
   const { nixTradingPair, setNixTradingPair } = useNixTradingPair()
+  
   return (
     !nixTradingPair
       ? (

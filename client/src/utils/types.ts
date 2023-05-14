@@ -1,3 +1,7 @@
+export type Blockchain = {
+  blockChain: string
+}
+
 export type Tokens = {
   amount: string
   fromToken: string
@@ -26,6 +30,8 @@ export type RenderCustomTokenPairsProps = {
 export type ContextTokens = {
   customPair: TokenPairInfo
   setCustomPair: React.Dispatch<React.SetStateAction<TokenPairInfo>>
+  blockChain: string
+  setBlockChain: React.Dispatch<React.SetStateAction<string>>
 }
 
 export type useContextTokens = {

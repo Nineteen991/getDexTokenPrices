@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from 'react'
 
-import WbnbPrices from '../btcbEthWbnbPrices/wbnbPrices'
-import fetchCustomPairPrices from '../../utils/fetchCustomPairPrices'
-import RenderCustomTokenPairs from '../renderCustomTokenPairs'
-import { Context } from '../../tokenContext'
-import { ContextTokens, TokenPairInfo } from '../../utils/types'
+import WbnbPrices from '../../btcbEthWbnbPrices/wbnbPrices'
+import fetchCustomPairPrices from '../../../utils/fetchCustomPairPrices'
+import RenderCustomTokenPairs from '../../renderCustomTokenPairs'
+import { Context } from '../../../tokenContext'
+import { ContextTokens, TokenPairInfo } from '../../../utils/types'
 
-export default function BiSwapV2() {
-  const dex = 'biswapV2'
+export default function BakerySwapV2() {
+  const dex = 'bakeryswapV2'
   const chain = 'bsc'
   const [customDexPairs, setCustomDexPairs] = useState<TokenPairInfo[]>([])
   const { customPair } = useContext(Context) as ContextTokens
@@ -24,8 +24,8 @@ export default function BiSwapV2() {
   }, [customPair])
 
   return (
-    <div className='biswap dex'>
-      <h2 className='dex-prices'>BiSwap v2 Prices</h2>
+    <div className='bakeryswap dex'>
+      <h2 className='dex-prices'>BakerySwap v2 Prices</h2>
 
       <WbnbPrices dex={ dex } chain={ chain } />
 
