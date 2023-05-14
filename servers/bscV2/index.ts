@@ -13,9 +13,8 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }))
 
 // Routes
 app.get('/', (req: Request, res: Response) => {
-  res.send("Let's get some prices!")
+  res.send("Let's get some BSC prices!")
 })
-
 app.use('/api/v1/bsc', pancakeRouter)
 
 const PORT = 5000
