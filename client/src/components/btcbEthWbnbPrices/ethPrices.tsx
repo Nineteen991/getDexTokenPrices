@@ -1,44 +1,29 @@
 import { useEffect, useState } from 'react'
 
 import fetchPrices from '../../utils/fetchPrices'
-import { BSCaddr } from '../../utils/addresses'
+import { ETHaddr } from '../../utils/addresses'
 import { DexProps } from '../../utils/types'
 import RenderTokenPrice from '../renderTokenPrice'
 
 export default function EthPrices({ dex, chain }: DexProps) {
-  const [ethToBusdPrices, setEthToBusdPrice] = useState<string>('')
   const [ethToUsdtPrices, setEthToUsdtPrice] = useState<string>('')
   const [ethToUsdcPrices, setEthToUsdcPrice] = useState<string>('')
 
   useEffect(() => {
     fetchPrices(
-      '1', BSCaddr.ETH, setEthToBusdPrice, BSCaddr.BUSD, dex, chain)
+      '1', ETHaddr.WETH, setEthToUsdtPrice, ETHaddr.USDT, dex, chain)
     fetchPrices(
-      '1', BSCaddr.ETH, setEthToUsdtPrice, BSCaddr.USDT, dex, chain)
-    fetchPrices(
-      '1', BSCaddr.ETH, setEthToUsdcPrice, BSCaddr.USDC, dex, chain)
+      '1', ETHaddr.WETH, setEthToUsdcPrice, ETHaddr.USDC, dex, chain)
   }, [dex, chain])
 
   return (
     <div className='returned-prices'>
       {
-        ethToBusdPrices
-          ? <RenderTokenPrice 
-              price={ ethToBusdPrices } 
-              fromToken={ BSCaddr.ETH } 
-              toToken={ BSCaddr.BUSD } 
-              dex={ dex }
-              chain={ chain }
-              reset={ setEthToBusdPrice }
-            />
-          : <h3 className='returned-price'>'Fetching ETH / BUSD price...'</h3>
-      }
-      {
         ethToUsdtPrices
           ? <RenderTokenPrice 
               price={ ethToUsdtPrices } 
-              fromToken={ BSCaddr.ETH } 
-              toToken={ BSCaddr.USDT } 
+              fromToken={ ETHaddr.WETH } 
+              toToken={ ETHaddr.USDT } 
               dex={ dex }
               chain={ chain }
               reset={ setEthToUsdtPrice }
@@ -49,8 +34,8 @@ export default function EthPrices({ dex, chain }: DexProps) {
         ethToUsdcPrices
           ? <RenderTokenPrice 
               price={ ethToUsdcPrices } 
-              fromToken={ BSCaddr.ETH } 
-              toToken={ BSCaddr.USDC } 
+              fromToken={ ETHaddr.WETH } 
+              toToken={ ETHaddr.USDC } 
               dex={ dex }
               chain={ chain }
               reset={ setEthToUsdcPrice }

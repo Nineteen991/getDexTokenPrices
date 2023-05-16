@@ -1,7 +1,7 @@
 import { useNixTradingPair } from "../hooks/useNixTradingPair"
-import { BSCaddr } from "../utils/addresses"
 import fetchPrices from '../utils/fetchPrices'
 import { Token } from '../utils/types'
+import { getBlockchainName } from "../utils/getBlockchainName"
 
 export default function RenderTokenPrice(
   {
@@ -13,13 +13,15 @@ export default function RenderTokenPrice(
     reset
   }: Token ) {
   const { nixTradingPair, setNixTradingPair } = useNixTradingPair()
+  // I want the particular blockchain so I can get the token symbols
+  const blockchain = getBlockchainName(chain)
 
   // I want the object keys for each pair name
-  const fromName = Object.keys(BSCaddr)[
-    Object.values(BSCaddr).indexOf(fromToken)
+  const fromName = Object.keys(blockchain)[
+    Object.values(blockchain).indexOf(fromToken)
   ]
-  const toName = Object.keys(BSCaddr)[
-    Object.values(BSCaddr).indexOf(toToken)
+  const toName = Object.keys(blockchain)[
+    Object.values(blockchain).indexOf(toToken)
   ]
 
   const refreshPrice = () => {

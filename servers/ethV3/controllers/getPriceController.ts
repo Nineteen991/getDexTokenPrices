@@ -10,7 +10,7 @@ import { GetPrices } from '../interfaces/getPrices.interface'
 import { USDT, USDC } from '../utils/addresses'
 
 const getPriceController = async (req: Request, res: Response) => {
-  const { amount, fromToken, toToken } = req.body as GetPrices
+  const { amount, fromToken, toToken, dex } = req.body as GetPrices
   let decimalsIn = 18
   let decimalsOut = 18
 

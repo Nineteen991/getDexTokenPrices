@@ -1,13 +1,26 @@
 import { useContext, useReducer } from 'react'
 
 import { BSCaddr } from '../utils/addresses'
+import { ETHaddr } from '../utils/addresses'
 import { Context } from '../tokenContext'
 import { ContextTokens } from '../utils/types'
 import { initialState, reducer } from '../utils/tokenPairReducer'
+import { Blockchain } from '../utils/types'
+import BSCFormOptions from './blockchains/bscFormOptions'
+import ETHFormOptions from './blockchains/ethFormOptions'
 
-export default function CustomTokenPrice() {
+export default function CustomTokenPrice({ blockChain }: Blockchain) {
   const { setCustomPair } = useContext(Context) as ContextTokens
   const [tokenPair, dispatch] = useReducer(reducer, initialState)
+  let blockchain = {}
+
+  if (blockChain === 'ETH') {
+    blockchain = ETHaddr
+  } else if (blockChain === 'BSC') {
+    blockchain = BSCaddr
+  } else {
+    throw new Error("Reducer know what blockchain you're using")
+  }
 
   const handleChange = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault()
@@ -15,7 +28,7 @@ export default function CustomTokenPrice() {
     const { name, value } = target
 
     // Get the object key names 'ie: BTC, ETH'
-    const key = Object.keys(BSCaddr)[Object.values(BSCaddr).indexOf(value)]
+    const key = Object.keys(blockchain)[Object.values(blockchain).indexOf(value)]
 
     if (name === 'amount') {
       dispatch({ type: 'AMOUNT', payload: value, key })
@@ -54,14 +67,11 @@ export default function CustomTokenPrice() {
             onChange={ handleChange }
             required
           >
-            <option value=''></option>
-            <option value={ BSCaddr.BTCB }>BTCB</option>
-            <option value={ BSCaddr.ETH }>ETH</option>
-            <option value={ BSCaddr.WBNB }>WBNB</option>
-            <option value={ BSCaddr.CAKE }>CAKE</option>
-            <option value={ BSCaddr.BUSD }>BUSD</option>
-            <option value={ BSCaddr.USDT }>USDT</option>
-            <option value={ BSCaddr.USDC }>USDC</option>
+            {
+              blockChain === 'ETH'
+                ? <ETHFormOptions />
+                : <BSCFormOptions />
+            }
           </select>
           <select
             name='toToken'
@@ -69,14 +79,11 @@ export default function CustomTokenPrice() {
             onChange={ handleChange }
             required
           >
-            <option value=''></option>
-            <option value={ BSCaddr.BTCB }>BTCB</option>
-            <option value={ BSCaddr.ETH }>ETH</option>
-            <option value={ BSCaddr.WBNB }>WBNB</option>
-            <option value={ BSCaddr.CAKE }>CAKE</option>
-            <option value={ BSCaddr.BUSD }>BUSD</option>
-            <option value={ BSCaddr.USDT }>USDT</option>
-            <option value={ BSCaddr.USDC }>USDC</option>
+            {
+              blockChain === 'ETH'
+                ? <ETHFormOptions />
+                : <BSCFormOptions />
+            }
           </select>
           <button 
             type='submit'
@@ -86,7 +93,6 @@ export default function CustomTokenPrice() {
           </button>
         </form>
       </div>
-    
     </div>
   )
 }

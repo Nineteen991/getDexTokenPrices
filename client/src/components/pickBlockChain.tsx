@@ -21,10 +21,10 @@ export default function PickBlockChain() {
         onChange={ handleChange }
       >
         <option value='ETH'>ETH</option>
-        <option value='AVALANCHE'>AVALANCHE</option>
+        {/* <option value='AVALANCHE'>AVALANCHE</option> */}
         <option value='BSC'>BSC</option>
-        <option value='FANTOM'>FANTOM</option>
-        <option value='POLYGON'>POLYGON</option>
+        {/* <option value='FANTOM'>FANTOM</option>
+        <option value='POLYGON'>POLYGON</option> */}
       </select>
     </div>
   )

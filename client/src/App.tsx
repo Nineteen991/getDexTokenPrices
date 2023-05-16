@@ -16,7 +16,7 @@ export default function App() {
   return (
     <div className='container'>
       <PickBlockChain />
-      <CustomTokenPrice />
+      <CustomTokenPrice blockChain={blockChain} />
       {
         blockChain === 'ETH'
           ? <ETH />

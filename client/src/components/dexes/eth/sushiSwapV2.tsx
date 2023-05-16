@@ -6,9 +6,9 @@ import RenderCustomTokenPairs from '../../renderCustomTokenPairs'
 import { Context } from '../../../tokenContext'
 import { ContextTokens, TokenPairInfo } from '../../../utils/types'
 
-export default function UniSwapV3() {
-  const dex = 'uniswapV3'
-  const chain = 'ethV3'
+export default function SushiSwapV2() {
+  const dex = 'sushiSwapV2'
+  const chain = 'ethV2'
   const [customDexPairs, setCustomDexPairs] = useState<TokenPairInfo[]>([])
   const { customPair } = useContext(Context) as ContextTokens
 
@@ -24,8 +24,8 @@ export default function UniSwapV3() {
   }, [customPair])
 
   return (
-    <div className='uniswap dex'>
-      <h2 className='dex-prices'>UniSwap v3 Prices</h2>
+    <div className='sushiswap dex'>
+      <h2 className='dex-prices'>SushiSwap Prices</h2>
 
       <EthPrices dex={ dex } chain={ chain } />
 
