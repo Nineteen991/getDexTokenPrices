@@ -25,7 +25,7 @@ export default function BiSwapV2() {
 
   return (
     <div className='biswap dex'>
-      <h2 className='dex-prices'>BiSwap v2 Prices</h2>
+      <h2 className='dex-prices title-secondary'>BiSwap v2 Prices</h2>
 
       <WbnbPrices dex={ dex } chain={ chain } />
 

@@ -25,7 +25,7 @@ export default function PancakeSwapV2() {
 
   return (
     <div className='pancakeswap dex'>
-      <h2 className='dex-prices'>PancakeSwap v2 Prices</h2>
+      <h2 className='dex-prices title-secondary'>PancakeSwap v2 Prices</h2>
 
       <WbnbPrices dex={ dex } chain={ chain } />
 

@@ -19,4 +19,23 @@ a:link, a:visited, a:hover, a:active
     text-decoration: none
 
 .container
+  width: 100%
   padding: 5%
+  /* fallback for old browsers */
+  background: #0F2027
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027)
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #2C5364, #203A43, #0F2027)
+  color: $mint
+  text-shadow: 1px 1px black
+  @include flex-column-center
+
+.btn
+  padding: 1rem 2rem
+  border-radius: 2rem
+  color: $mint
+  background: #334d50
+  background: -webkit-linear-gradient(to right, #cbcaa5, #334d50)
+  background: linear-gradient(to right, #cbcaa5, #334d50)
+  text-shadow: 1px 1px black

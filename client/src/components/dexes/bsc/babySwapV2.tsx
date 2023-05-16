@@ -25,7 +25,7 @@ export default function BabySwapV2() {
 
   return (
     <div className='babyswap dex'>
-      <h2 className='dex-prices'>BabySwap v2 Prices</h2>
+      <h2 className='dex-prices title-secondary'>BabySwap v2 Prices</h2>
 
       <WbnbPrices dex={ dex } chain={ chain } />
 

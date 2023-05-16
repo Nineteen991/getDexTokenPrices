@@ -25,7 +25,7 @@ export default function ApeSwapV2() {
 
   return (
     <div className='apeswap dex'>
-      <h2 className='dex-prices'>ApeSwap v2 Prices</h2>
+      <h2 className='dex-prices title-secondary'>ApeSwap v2 Prices</h2>
 
       <WbnbPrices dex={ dex } chain={ chain } />
 

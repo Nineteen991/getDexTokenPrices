@@ -14,9 +14,11 @@ export default function PickBlockChain() {
 
   return (
     <div className="blockchain">
-      <h2 className="secondary-title">Pick a Blockchain</h2>
+      <h2 className="title-tertiary">Pick a Blockchain</h2>
+      <label htmlFor='blockchain-select' className="blockchain-select"/>
       <select 
         name='blockchain'
+        id='blockchain-select'
         className="blockchain-input"
         onChange={ handleChange }
       >

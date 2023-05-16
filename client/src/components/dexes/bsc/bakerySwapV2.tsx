@@ -25,7 +25,7 @@ export default function BakerySwapV2() {
 
   return (
     <div className='bakeryswap dex'>
-      <h2 className='dex-prices'>BakerySwap v2 Prices</h2>
+      <h2 className='dex-prices title-secondary'>BakerySwap v2 Prices</h2>
 
       <WbnbPrices dex={ dex } chain={ chain } />
 

@@ -25,7 +25,7 @@ export default function UniSwapV3() {
 
   return (
     <div className='uniswap dex'>
-      <h2 className='dex-prices'>UniSwap v3 Prices</h2>
+      <h2 className='dex-prices title-secondary'>UniSwap v3 Prices</h2>
 
       <EthPrices dex={ dex } chain={ chain } />
 

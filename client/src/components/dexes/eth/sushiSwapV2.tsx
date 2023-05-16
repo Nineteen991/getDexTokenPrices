@@ -25,7 +25,7 @@ export default function SushiSwapV2() {
 
   return (
     <div className='sushiswap dex'>
-      <h2 className='dex-prices'>SushiSwap Prices</h2>
+      <h2 className='dex-prices title-secondary'>SushiSwap Prices</h2>
 
       <EthPrices dex={ dex } chain={ chain } />
 

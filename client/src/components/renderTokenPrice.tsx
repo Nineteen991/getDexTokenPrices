@@ -1,5 +1,5 @@
 import { useNixTradingPair } from "../hooks/useNixTradingPair"
-import fetchPrices from '../utils/fetchPrices'
+// import fetchPrices from '../utils/fetchPrices'
 import { Token } from '../utils/types'
 import { getBlockchainName } from "../utils/getBlockchainName"
 
@@ -24,32 +24,32 @@ export default function RenderTokenPrice(
     Object.values(blockchain).indexOf(toToken)
   ]
 
-  const refreshPrice = () => {
-    fetchPrices('1', fromToken, reset, toToken, dex, chain)
-  }
+  // const refreshPrice = () => {
+  //   fetchPrices('1', fromToken, reset, toToken, dex, chain)
+  // }
 
   return (  
     !nixTradingPair
       ? (
           <div className="trading-pair">
-            <h3 className='returned-price'>
+            <p className='returned-price'>
               { price }
               <span className='price-span'>
                 { fromName } / { toName }
               </span>
-            </h3>
+            </p>
             <button 
               className="nix-trading-pair btn"
               onClick={ () => setNixTradingPair(true) }
             >
               X
             </button>
-            <button
+            {/* <button
               className="refresh btn"
               onClick={ refreshPrice }
             >
               Refresh Price
-            </button>
+            </button> */}
           </div>
         )
       : null
