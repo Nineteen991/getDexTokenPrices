@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 
-import WbnbPrices from '../../btcbEthWbnbPrices/wbnbPrices'
+import WbnbPrices from '../../initialPrices/wbnbPrices'
 import fetchCustomPairPrices from '../../../utils/fetchCustomPairPrices'
 import RenderCustomTokenPairs from '../../renderCustomTokenPairs'
 import { Context } from '../../../tokenContext'

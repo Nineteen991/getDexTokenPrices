@@ -7,6 +7,7 @@ import PickBlockChain from './components/pickBlockChain'
 import CustomTokenPrice from './components/customTokenPrice'
 import BSC from './components/blockchains/bsc'
 import ETH from './components/blockchains/eth'
+import Footer from './components/footer'
 import './App.sass'
 
 export default function App() {
@@ -28,9 +29,12 @@ export default function App() {
       <Header />
       <PickBlockChain />
       <CustomTokenPrice blockChain={ blockChain } />
-      {
-        renderBlockchain
-      }
+      <div className='dex-grid'>
+        {
+          renderBlockchain
+        }
+      </div>
+      <Footer />
     </div>
   )
 }

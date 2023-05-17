@@ -28,7 +28,9 @@ export default function EthPrices({ dex, chain }: DexProps) {
               chain={ chain }
               reset={ setEthToUsdtPrice }
             />
-          : <h3 className='returned-price'>'Fetching ETH / USDT price...'</h3>
+          : <h3 className='returned-price-h3 title-tertiary'>
+              'Fetching ETH / USDT price...'
+            </h3>
       }
       {
         ethToUsdcPrices
@@ -40,7 +42,9 @@ export default function EthPrices({ dex, chain }: DexProps) {
               chain={ chain }
               reset={ setEthToUsdcPrice }
             />
-          : <h3 className='returned-price'>'Fetching ETH / USDC price...'</h3>
+          : <h3 className='returned-price-h3 title-tertiary'>
+              'Fetching ETH / USDC price...'
+            </h3>
       }
     </div>
   )
