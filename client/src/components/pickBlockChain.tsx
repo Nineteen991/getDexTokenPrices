@@ -25,8 +25,8 @@ export default function PickBlockChain() {
         <option value='ETH'>ETH</option>
         {/* <option value='AVALANCHE'>AVALANCHE</option> */}
         <option value='BSC'>BSC</option>
-        {/* <option value='FANTOM'>FANTOM</option>
-        <option value='POLYGON'>POLYGON</option> */}
+        {/* <option value='FANTOM'>FANTOM</option> */}
+        <option value='Polygon'>POLYGON</option>
       </select>
     </div>
   )

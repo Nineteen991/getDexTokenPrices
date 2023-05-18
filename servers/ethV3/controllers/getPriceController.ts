@@ -20,8 +20,7 @@ const getPriceController = async (req: Request, res: Response) => {
   if (toToken === USDT || toToken === USDC) {
     decimalsOut = 6
   } 
-console.log(decimalsIn)
-console.log(decimalsOut)
+
   try {
     const quoterContract = new ethers.Contract(
       uniswapQuoterAddr,

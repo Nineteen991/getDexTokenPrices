@@ -8,12 +8,12 @@ export default function RenderCustomTokenPairs({ tokenPair }: RenderCustomTokenP
     !nixTradingPair
       ? (
           <div className="trading-pair">
-            <h3 className='returned-price'>
+            <p className='returned-price'>
               { tokenPair.amount }
               <span className='price-span'>
                 { tokenPair.fromTokenName } / { tokenPair.toTokenName }
               </span>
-            </h3>
+            </p>
             <button 
               className="nix-trading-pair btn"
               onClick={ () => setNixTradingPair(true) }

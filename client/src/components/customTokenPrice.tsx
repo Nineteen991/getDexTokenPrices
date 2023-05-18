@@ -2,12 +2,14 @@ import { useContext, useReducer } from 'react'
 
 import { BSCaddr } from '../utils/addresses'
 import { ETHaddr } from '../utils/addresses'
+import { POLYGONaddr } from '../utils/addresses'
 import { Context } from '../tokenContext'
 import { ContextTokens } from '../utils/types'
 import { initialState, reducer } from '../utils/tokenPairReducer'
 import { Blockchain } from '../utils/types'
 import BSCFormOptions from './blockchains/bscFormOptions'
 import ETHFormOptions from './blockchains/ethFormOptions'
+import PolygonFormOptions from './blockchains/polygonFormOptions'
 
 export default function CustomTokenPrice({ blockChain }: Blockchain) {
   const { setCustomPair } = useContext(Context) as ContextTokens
@@ -18,8 +20,10 @@ export default function CustomTokenPrice({ blockChain }: Blockchain) {
     blockchain = ETHaddr
   } else if (blockChain === 'BSC') {
     blockchain = BSCaddr
+  } else if (blockChain === 'Polygon') {
+    blockchain = POLYGONaddr
   } else {
-    throw new Error("Reducer know what blockchain you're using")
+    throw new Error("Reducer don't know what blockchain you're using")
   }
 
   const handleChange = (e: React.FormEvent<EventTarget>) => {
@@ -70,7 +74,9 @@ export default function CustomTokenPrice({ blockChain }: Blockchain) {
             {
               blockChain === 'ETH'
                 ? <ETHFormOptions />
-                : <BSCFormOptions />
+                : blockChain === 'BSC'
+                  ? <BSCFormOptions />
+                  : <PolygonFormOptions />
             }
           </select>
           <select
@@ -82,7 +88,9 @@ export default function CustomTokenPrice({ blockChain }: Blockchain) {
             {
               blockChain === 'ETH'
                 ? <ETHFormOptions />
-                : <BSCFormOptions />
+                : blockChain === 'BSC'
+                  ? <BSCFormOptions />
+                  : <PolygonFormOptions />
             }
           </select>
           <button 

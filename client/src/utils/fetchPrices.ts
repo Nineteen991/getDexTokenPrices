@@ -16,6 +16,8 @@ export default async function fetchPrices(
     blockchain = 5001
   } else if (chain === 'bsc') {
     blockchain = 5000
+  } else if (chain === 'polygonV2') {
+    blockchain = 5003
   } else {
     throw new Error("Can't fetch if I don't know what blockchain you're using")
   }

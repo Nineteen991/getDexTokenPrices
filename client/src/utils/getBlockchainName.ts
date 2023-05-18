@@ -1,5 +1,6 @@
 import { BSCaddr } from "../utils/addresses"
 import { ETHaddr } from "../utils/addresses"
+import { POLYGONaddr } from "../utils/addresses"
 
 export function getBlockchainName(chain: string) {
   let blockchain
@@ -8,6 +9,8 @@ export function getBlockchainName(chain: string) {
     blockchain = ETHaddr
   } else if (chain === 'bsc') {
     blockchain = BSCaddr
+  } else if (chain === 'polygonV2') {
+    blockchain = POLYGONaddr
   } else {
     throw new Error('Unknown Blockchain')
   }
