@@ -2,7 +2,7 @@ import { useContext, useReducer } from 'react'
 
 import { BSCaddr } from '../utils/addresses'
 import { ETHaddr } from '../utils/addresses'
-import { POLYGONaddr } from '../utils/addresses'
+import { POLYGONaddr } from '../utils/polygonAddr'
 import { Context } from '../tokenContext'
 import { ContextTokens } from '../utils/types'
 import { initialState, reducer } from '../utils/tokenPairReducer'

@@ -1,6 +1,6 @@
 import { BSCaddr } from "../utils/addresses"
 import { ETHaddr } from "../utils/addresses"
-import { POLYGONaddr } from "../utils/addresses"
+import { POLYGONaddr } from "../utils/polygonAddr"
 
 export function getBlockchainName(chain: string) {
   let blockchain

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import fetchPrices from '../../utils/fetchPrices'
-import { POLYGONaddr } from '../../utils/addresses'
+import { POLYGONaddr } from '../../utils/polygonAddr'
 import { DexProps } from '../../utils/types'
 import RenderTokenPrice from '../renderTokenPrice'
 
