@@ -1,12 +1,10 @@
 import { useContext, useReducer } from 'react'
 
-import { BSCaddr } from '../utils/addresses'
-import { ETHaddr } from '../utils/addresses'
-import { POLYGONaddr } from '../utils/polygonAddr'
+import { ethTokens, polygonTokens, bscTokens } from '../utils/getToken'
 import { Context } from '../tokenContext'
 import { ContextTokens } from '../utils/types'
 import { initialState, reducer } from '../utils/tokenPairReducer'
-import { Blockchain } from '../utils/types'
+import { Blockchain, TokenList } from '../utils/types'
 import BSCFormOptions from './blockchains/bscFormOptions'
 import ETHFormOptions from './blockchains/ethFormOptions'
 import PolygonFormOptions from './blockchains/polygonFormOptions'
@@ -14,15 +12,16 @@ import PolygonFormOptions from './blockchains/polygonFormOptions'
 export default function CustomTokenPrice({ blockChain }: Blockchain) {
   const { setCustomPair } = useContext(Context) as ContextTokens
   const [tokenPair, dispatch] = useReducer(reducer, initialState)
-  let blockchain = {}
+  let blockchain: TokenList[] = []
 
   if (blockChain === 'ETH') {
-    blockchain = ETHaddr
+    blockchain = ethTokens
   } else if (blockChain === 'BSC') {
-    blockchain = BSCaddr
+    blockchain = bscTokens
   } else if (blockChain === 'Polygon') {
-    blockchain = POLYGONaddr
-  } else {
+    blockchain = polygonTokens
+  } 
+  else {
     throw new Error("Reducer don't know what blockchain you're using")
   }
 
@@ -31,8 +30,9 @@ export default function CustomTokenPrice({ blockChain }: Blockchain) {
     const target = e.target as HTMLInputElement
     const { name, value } = target
 
-    // Get the object key names 'ie: BTC, ETH'
-    const key = Object.keys(blockchain)[Object.values(blockchain).indexOf(value)]
+    // Get the individual token
+    const [token] = blockchain.filter(token => token.address === value)
+    const key = token ? token.symbol : 'WETH'
 
     if (name === 'amount') {
       dispatch({ type: 'AMOUNT', payload: value, key })
@@ -47,7 +47,7 @@ export default function CustomTokenPrice({ blockChain }: Blockchain) {
       throw Error('The reducer name is wrong :(')
     }
   }
-
+console.log(tokenPair)
   const handleSubmit = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault()
     setCustomPair(tokenPair)
@@ -76,7 +76,9 @@ export default function CustomTokenPrice({ blockChain }: Blockchain) {
                 ? <ETHFormOptions />
                 : blockChain === 'BSC'
                   ? <BSCFormOptions />
-                  : <PolygonFormOptions />
+                  : blockChain === 'Polygon'
+                    ? <PolygonFormOptions />
+                    : null
             }
           </select>
           <select
@@ -90,7 +92,9 @@ export default function CustomTokenPrice({ blockChain }: Blockchain) {
                 ? <ETHFormOptions />
                 : blockChain === 'BSC'
                   ? <BSCFormOptions />
-                  : <PolygonFormOptions />
+                  : blockChain === 'Polygon'
+                    ? <PolygonFormOptions />
+                    : null
             }
           </select>
           <button 
