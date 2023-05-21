@@ -57,49 +57,51 @@ console.log(tokenPair)
     <div className='custom-token-price'>
       <div className='input-fields'>
         <form className='input-form' onSubmit={ handleSubmit }>
-          <input
-            name='amount'
-            className='input-amount'
-            placeholder='Amount'
-            value={ tokenPair.amount }
-            onChange={ handleChange }
-            required
-          />
-          <select
-            name='fromToken'
-            className='input-tokens'
-            onChange={ handleChange }
-            required
-          >
-            {
-              blockChain === 'ETH'
-                ? <ETHFormOptions />
-                : blockChain === 'BSC'
-                  ? <BSCFormOptions />
-                  : blockChain === 'Polygon'
-                    ? <PolygonFormOptions />
-                    : null
-            }
-          </select>
-          <select
-            name='toToken'
-            className='input-tokens'
-            onChange={ handleChange }
-            required
-          >
-            {
-              blockChain === 'ETH'
-                ? <ETHFormOptions />
-                : blockChain === 'BSC'
-                  ? <BSCFormOptions />
-                  : blockChain === 'Polygon'
-                    ? <PolygonFormOptions />
-                    : null
-            }
-          </select>
+          <div>
+            <input
+              name='amount'
+              className='input-amount'
+              placeholder='Amount'
+              value={ tokenPair.amount }
+              onChange={ handleChange }
+              required
+            />
+            <select
+              name='fromToken'
+              className='input-tokens'
+              onChange={ handleChange }
+              required
+            >
+              {
+                blockChain === 'ETH'
+                  ? <ETHFormOptions />
+                  : blockChain === 'BSC'
+                    ? <BSCFormOptions />
+                    : blockChain === 'Polygon'
+                      ? <PolygonFormOptions />
+                      : null
+              }
+            </select>
+            <select
+              name='toToken'
+              className='input-tokens'
+              onChange={ handleChange }
+              required
+            >
+              {
+                blockChain === 'ETH'
+                  ? <ETHFormOptions />
+                  : blockChain === 'BSC'
+                    ? <BSCFormOptions />
+                    : blockChain === 'Polygon'
+                      ? <PolygonFormOptions />
+                      : null
+              }
+            </select>
+          </div>
           <button 
             type='submit'
-            className='submit-btn'
+            className='btn submit-btn'
           >
             Submit
           </button>

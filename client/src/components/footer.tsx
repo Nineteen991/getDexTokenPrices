@@ -11,10 +11,7 @@ export default function Footer() {
         BTC: 19GXgGEDwCPgNNJfGA6NRR8EvQ1cJLpbfM
       </p>
       <p className="tip-jar">
-        ETH: 0xb3Bf03cEFF44F5d80E644CD4967A9CC2a040D169
-      </p>
-      <p className="tip-jar">
-        BSC: 0xb3Bf03cEFF44F5d80E644CD4967A9CC2a040D169
+        MetaMask: 0xb3Bf03cEFF44F5d80E644CD4967A9CC2a040D169
       </p>
     </div>
   )

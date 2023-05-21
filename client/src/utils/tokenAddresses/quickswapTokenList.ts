@@ -1,5 +1,13 @@
 export const polygonChainTokenList = [
   {
+    "name": "Wrapped Matic",
+    "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+    "symbol": "WMATIC",
+    "decimals": 18,
+    "chainId": 137,
+    "logoURI": "https://i.imgur.com/uIExoAr.png"
+  },
+  {
     "name": "4INT",
     "address": "0x5CEeBB0947d58Fabde2fc026Ffe4B33ccFE1bA8B",
     "symbol": "4INT",
@@ -1366,14 +1374,6 @@ export const polygonChainTokenList = [
     "decimals": 18,
     "chainId": 137,
     "logoURI": "https://assets.coingecko.com/coins/images/24106/small/200px-cmc.png?1646376154"
-  },
-  {
-    "name": "Wrapped Matic",
-    "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
-    "symbol": "WMATIC",
-    "decimals": 18,
-    "chainId": 137,
-    "logoURI": "https://i.imgur.com/uIExoAr.png"
   },
   {
     "name": "Wombat",

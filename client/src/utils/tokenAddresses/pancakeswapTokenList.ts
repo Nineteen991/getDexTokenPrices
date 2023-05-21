@@ -1,5 +1,13 @@
 export const bscTokenList = [
   {
+  "name": "WBNB Token",
+  "symbol": "WBNB",
+  "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+  "chainId": 56,
+  "decimals": 18,
+  "logoURI": "https://tokens.pancakeswap.finance/images/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c.png"
+  },
+  {
   "name": "PancakeSwap Token",
   "symbol": "CAKE",
   "address": "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
@@ -2462,14 +2470,6 @@ export const bscTokenList = [
   "chainId": 56,
   "decimals": 18,
   "logoURI": "https://tokens.pancakeswap.finance/images/0xa2E3356610840701BDf5611a53974510Ae27E2e1.png"
-  },
-  {
-  "name": "WBNB Token",
-  "symbol": "WBNB",
-  "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
-  "chainId": 56,
-  "decimals": 18,
-  "logoURI": "https://tokens.pancakeswap.finance/images/0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c.png"
   },
   {
   "name": "BitWell Token",

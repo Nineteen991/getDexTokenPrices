@@ -22,9 +22,9 @@ export default function PickBlockChain() {
         className="blockchain-input"
         onChange={ handleChange }
       >
+        <option value='BSC'>BSC</option>
         <option value='ETH'>ETH</option>
         {/* <option value='AVALANCHE'>AVALANCHE</option> */}
-        <option value='BSC'>BSC</option>
         {/* <option value='FANTOM'>FANTOM</option> */}
         <option value='Polygon'>POLYGON</option>
       </select>

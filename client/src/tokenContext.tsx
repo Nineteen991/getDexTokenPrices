@@ -14,7 +14,7 @@ function ContextProvider ({ children }: { children: ReactNode }) {
     toTokenName: '',
   })
 
-  const [blockChain, setBlockChain] = useState('ETH')
+  const [blockChain, setBlockChain] = useState('BSC')
 
   return (
     <Context.Provider value={{

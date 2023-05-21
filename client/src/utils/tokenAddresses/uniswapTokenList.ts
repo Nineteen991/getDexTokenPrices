@@ -1,5 +1,32 @@
 export const ethChainTokenList = [
   {
+    "name": "Wrapped Ether",
+    "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+    "symbol": "WETH",
+    "decimals": 18,
+    "chainId": 1,
+    "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png",
+    "extensions": {
+      "bridgeInfo": {
+        "10": {
+          "tokenAddress": "0x4200000000000000000000000000000000000006"
+        },
+        "56": {
+          "tokenAddress": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8"
+        },
+        "137": {
+          "tokenAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619"
+        },
+        "42161": {
+          "tokenAddress": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
+        },
+        "42220": {
+          "tokenAddress": "0x2DEf4285787d58a2f811AF24755A8150622f4361"
+        }
+      }
+    }
+  },
+  {
     "chainId": 1,
     "address": "0x111111111117dC0aa78b770fA6A738034120C302",
     "name": "1inch",
@@ -3757,33 +3784,6 @@ export const ethChainTokenList = [
       "bridgeInfo": {
         "137": {
           "tokenAddress": "0x90bb6fEB70A9a43CfAaA615F856BA309FD759A90"
-        }
-      }
-    }
-  },
-  {
-    "name": "Wrapped Ether",
-    "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-    "symbol": "WETH",
-    "decimals": 18,
-    "chainId": 1,
-    "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png",
-    "extensions": {
-      "bridgeInfo": {
-        "10": {
-          "tokenAddress": "0x4200000000000000000000000000000000000006"
-        },
-        "56": {
-          "tokenAddress": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8"
-        },
-        "137": {
-          "tokenAddress": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619"
-        },
-        "42161": {
-          "tokenAddress": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
-        },
-        "42220": {
-          "tokenAddress": "0x2DEf4285787d58a2f811AF24755A8150622f4361"
         }
       }
     }
@@ -9695,21 +9695,6 @@ export const ethChainTokenList = [
       "bridgeInfo": {
         "1": {
           "tokenAddress": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599"
-        }
-      }
-    }
-  },
-  {
-    "name": "Wrapped Ether",
-    "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
-    "symbol": "WETH",
-    "decimals": 18,
-    "chainId": 42161,
-    "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png",
-    "extensions": {
-      "bridgeInfo": {
-        "1": {
-          "tokenAddress": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
         }
       }
     }

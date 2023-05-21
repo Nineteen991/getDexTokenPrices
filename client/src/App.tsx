@@ -32,11 +32,9 @@ export default function App() {
       <Header />
       <PickBlockChain />
       <CustomTokenPrice blockChain={ blockChain } />
-      <div className='dex-grid'>
-        {
-          renderBlockchain
-        }
-      </div>
+      {
+        renderBlockchain
+      }
       <Footer />
     </div>
   )
