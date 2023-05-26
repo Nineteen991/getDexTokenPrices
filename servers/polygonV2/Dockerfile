@@ -1,6 +1,6 @@
 FROM node:18-slim
 
-WORKDIR /home/app/polygonV2
+WORKDIR /home/app
 
 COPY package.json .
 

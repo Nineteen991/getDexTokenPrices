@@ -8,4 +8,11 @@ along with from what exchange the price data came from.
 A user can input their own trading pairs and see what those 
 prices would be across different exchanges.
 
+![alt text](./client/src/images/data-across-dexs.png)
+
 The data fetched would help users find arbitrage opportunities.
+
+I decided to try something different in the architecture of this app.
+
+I have 1 react client that fetches data from multiple node.js servers.
+Each server fetches token prices from a different decentralized exchange.

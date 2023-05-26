@@ -9,16 +9,46 @@ services:
     stdin_open: true 
     tty: true 
     depends_on:
-      - back-end 
+      - back-end-bscV2
+      - back-end-ethV2
+      - back-end-ethV3
+      - back-end-polygonV2
     networks:
       - getDexTokenPrices
 
-  back-end:
-    build: ./servers
-    container_name: getDexTokenPrices-backend
+  back-end-bscV2:
+    build: ./servers/bscV2
+    container_name: getDexTokenPrices-bscV2
     restart: always
     ports:
-      - "5000: 5003"
+      - "5000:5000"
+    networks:
+      - getDexTokenPrices
+
+  back-end-ethV2:
+    build: ./servers/ethV2
+    container_name: getDexTokenPrices-ethV2
+    restart: always
+    ports:
+      - "5002:5002"
+    networks:
+      - getDexTokenPrices
+
+  back-end-ethV3:
+    build: ./servers/ethV3 
+    container_name: getDexTokenPrices-ethV3 
+    restart: always
+    ports:
+      - "5001:5001"
+    networks:
+      - getDexTokenPrices
+
+  back-end-polygonV2:
+    build: ./servers/polygonV2
+    container_name: getDexTokenPrices-polygonV2
+    restart: always 
+    ports: 
+      - "5003:5003"
     networks:
       - getDexTokenPrices
 

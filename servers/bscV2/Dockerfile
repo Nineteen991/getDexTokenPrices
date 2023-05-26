@@ -1,6 +1,6 @@
 FROM node:18-slim
 
-WORKDIR /home/app/bscV2
+WORKDIR /home/app
 
 COPY package.json .
 
