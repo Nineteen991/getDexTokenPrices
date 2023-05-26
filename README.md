@@ -26,3 +26,8 @@ different platform (UniswapV2 or V3).
 The screenshot above is fetching token prices from 5 different BSC
 DEXs all with a single call (in this case BakerySwap & BabySwap both
 seem to have low liquidity for the WBNB / CAKE token pair). 
+
+The screenshot below shows token pair data across 3 DEXs on the 
+ethereum network.
+
+![alt text](./client/src/images/eth.png)
