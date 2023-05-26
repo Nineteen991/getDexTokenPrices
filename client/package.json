@@ -46,5 +46,19 @@
   "devDependencies": {
     "@types/helmet": "^4.0.0",
     "@types/sass": "^1.45.0"
+  },
+  "proxy": {
+    "http://localhost:5000/api/v1/bsc": { 
+      "target": "http://getdextokenprices-bscv2:5000" 
+    },
+    "http://localhost:5001/api/v1/ethV3": { 
+      "target": "http://getdextokenprices-ethv3:5001" 
+    },
+    "http://localhost:5002/api/v1/ethV2": { 
+      "target": "http://getdextokenprices-ethv2:5002" 
+    },
+    "http://localhost:5003/api/v1/polygonV2": { 
+      "target": "http://getdextokenprices-polygonv2:5003" 
+    }
   }
 }

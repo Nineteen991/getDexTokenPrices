@@ -14,5 +14,15 @@ The data fetched would help users find arbitrage opportunities.
 
 I decided to try something different in the architecture of this app.
 
-I have 1 react client that fetches data from multiple node.js servers.
-Each server fetches token prices from a different decentralized exchange.
+I have 1 react client that fetches data from multiple node.js servers
+(localhost:5000 - 5003, more servers to be added soon). I've started
+the process of dockerizing, but I still have more to learn about
+Docker compose. For right meow, I'm starting each localhost server 
+separately.
+
+Each server fetches token prices from a different blockchain and
+different platform (UniswapV2 or V3).
+
+The screenshot above is fetching token prices from 5 different BSC
+DEXs all with a single call (in this case BakerySwap & BabySwap both
+seem to have low liquidity for the WBNB / CAKE token pair). 
