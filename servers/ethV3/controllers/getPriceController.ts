@@ -1,11 +1,15 @@
 import { Request, Response } from 'express'
 import { ethers } from 'ethers'
+import { FeeAmount } from '@uniswap/v3-sdk'  // new
+  // may use FeeAmount.MEDIUM
 
 import {
-  uniswapQuoterAddr,
+  // sushiQuoterAddr,
+  // uniswapQuoterAddr,
   uniswapQuoterABI,
   provider
 } from '../utils/abiProviderList'
+import { getDexRouter } from '../utils/setDexAddr'
 import { GetPrices } from '../interfaces/getPrices.interface'
 import { USDT, USDC } from '../utils/addresses'
 
@@ -23,16 +27,17 @@ const getPriceController = async (req: Request, res: Response) => {
 
   try {
     const quoterContract = new ethers.Contract(
-      uniswapQuoterAddr,
+      getDexRouter(dex),
       uniswapQuoterABI,
       provider
     )
+  // console.log(decimalsIn)
     const amountIn = ethers.utils.parseUnits(amount, decimalsIn)
   
     const quoteAmountOut = await quoterContract.callStatic.quoteExactInputSingle(
       fromToken,
       toToken,
-      3000,  // fee
+      FeeAmount.MEDIUM,  // fee was 3000 = MEDIUM, low = 500
       amountIn.toString(),
       0
     )
@@ -42,7 +47,7 @@ const getPriceController = async (req: Request, res: Response) => {
       quoteAmountOut.toString(), 
       decimalsOut
     )
-  console.log('amountOutHuman: ', amountOutHuman)
+  // console.log('amountOutHuman: ', amountOutHuman)
     res.status(200).send(amountOutHuman)
   }
   catch (error) {
